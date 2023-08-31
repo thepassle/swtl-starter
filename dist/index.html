@@ -1,0 +1,35 @@
+<html lang="en">
+  <head>
+    <base href="/">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="Description" content="">
+    <title></title>
+  </head>
+  <body>
+    <p>Installing service worker...</p>
+    <script>
+      /**
+       * If no service worker is installed yet, we wait for it to be installed
+       * and then reload the page
+       * 
+       * Further updates are taken care of by the update script, because the
+       * user will never see this index.html again
+       */
+      navigator.serviceWorker.register('./sw.js').then((registration) => {
+        console.log('Service worker registered successfully', registration);
+
+        if (!navigator.serviceWorker.controller) {
+          navigator.serviceWorker.addEventListener('message', (event) => {
+            if (event?.data?.type === 'SW_ACTIVATED') {
+              window.location.reload();
+            }
+          });
+        }
+      }).catch((err) => {
+        console.log('Service worker registration failed: ', err);
+      });
+    </script>
+  </body>
+</html>
+

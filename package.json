@@ -1,0 +1,19 @@
+{
+  "name": "swtl-starter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "esbuild src/sw.js --bundle --outfile=dist/sw.js --watch --format=iife --servedir=dist",
+    "build": "rm -rf dist/ && esbuild src/sw.js --bundle --outfile=dist/sw.js --minify --sourcemap --format=iife && cp index.html dist/"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "swtl": "^0.0.18"
+  },
+  "devDependencies": {
+    "esbuild": "^0.19.2"
+  }
+}
