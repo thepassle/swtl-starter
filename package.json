@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "swtl": "^0.0.19"
+    "swtl": "^0.0.22"
   },
   "devDependencies": {
     "esbuild": "^0.19.2"
